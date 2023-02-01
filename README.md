@@ -1,2 +1,5 @@
 # rotating_Earth
-rotating Earth.
+
+make rotating Earth.
+
+![rotatingEarth.gif](rotatingEarth.gif)
