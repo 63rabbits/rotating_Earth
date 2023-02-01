@@ -2,29 +2,35 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-import numpy as np
 import gif
+import numpy as np
+from cartopy.io.shapereader import Reader
+from cartopy.feature import ShapelyFeature
 
 
 @gif.frame
 def plot(size, x, y):
-    plt.figure(figsize=size)
-    ax = plt.axes(projection=ccrs.Orthographic(central_longitude=x, central_latitude=y))
+    fig = plt.figure(figsize=size)
+    fig.patch.set_alpha(0)
+    ax = plt.axes(projection=ccrs.Orthographic(central_longitude=x, central_latitude=y), frameon=False)
+
+    ax.add_feature(cfeature.OCEAN, facecolor='white')
     ax.add_feature(cfeature.LAND, facecolor='lightgray')
-    ax.coastlines(linewidth=1.0)
-    ax.gridlines(xlocs=xlocator, ylocs=ylocator, linestyle=':', linewidth=0.3, color='black')
+    ax.coastlines(linewidth=0.1)
+
+    ax.gridlines(xlocs=xlocator, ylocs=ylocator, linestyle=':', linewidth=0.1, color='black')
 
 
 ##########
 # size
 gif.options.matplotlib["dpi"] = 300
-figsize = (5, 5)
-duration = 60
+figsize = (2, 2)
+duration = 20
 
 ##########
 # viewpoint
 latitude = 36
-long_delta = 3
+long_delta = 1
 
 ##########
 # grid
@@ -40,4 +46,5 @@ for longitude in reversed(range(0, 360, long_delta)):
 
 ##########
 # Save "frames" to gif with a specified duration (milliseconds) between each frame
+print(f'saving gif ...')
 gif.save(frames, 'rotatingEarth.gif', duration=duration)
