@@ -29,7 +29,7 @@ long_delta = 3
 ##########
 # grid
 xlocator = mticker.FixedLocator(np.arange(-180, 180, 20))
-ylocator = mticker.FixedLocator(np.arange(-90, 90, 20))
+ylocator = mticker.FixedLocator(np.arange(-80, 90, 20))     # from -80 to draw equator.
 
 ##########
 # for Frame
