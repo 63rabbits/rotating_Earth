@@ -4,8 +4,6 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import gif
 import numpy as np
-from cartopy.io.shapereader import Reader
-from cartopy.feature import ShapelyFeature
 
 
 @gif.frame
